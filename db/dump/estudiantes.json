@@ -1,0 +1,51 @@
+[
+  {
+    "_id" : "BJDeAd_vln-",
+    "nombres" : "STEVEN SEBASTIAN",
+    "apellidos" : "MACIAS QUEZADA",
+    "matricula" : "201121507",
+    "correo" : "stsemaci@espol.edu.ec"  
+  },
+  {
+    "_id" : "SJmeCudPl3W",
+    "nombres" : "JOHARA ELVIRA",
+    "apellidos" : "SARMIENTO TAPIA",
+    "matricula" : "201501116",
+    "correo" : "johelsar@espol.edu.ec"
+  },
+  {
+    "_id" : "BJxgRuOvenZ",
+    "nombres" : "ANTHONY DARIO",
+    "apellidos" : "HERNANDEZ TAMAYO",
+    "matricula" : "201504309",
+    "correo" : "antdhern@espol.edu.ec"
+  },
+  {
+    "_id" : "Bye0Ouve3b",
+    "nombres" : "BREW JONATHAN",
+    "apellidos" : "COBOS GRANDA",
+    "matricula" : "201505975",
+    "correo" : "bjcobos@espol.edu.ec"
+  },
+  {
+    "_id" : "ryCCOdvgnZ",
+    "nombres" : "RAUL ALBERTO",
+    "apellidos" : "SALAMANCA VILLA",
+    "matricula" : "201421085",
+    "correo" : "rsalaman@espol.edu.ec"
+  },
+  {
+    "_id" : "SJdZkFOPl2-",
+    "nombres" : "JORDY AUGUSTO",
+    "apellidos" : "MORALES MOREIRA",
+    "matricula" : "201608726",
+    "correo" : "joaumora@espol.edu.ec"
+  },
+  {
+    "_id" : "SJkl0u_wg2-",
+    "nombres" : "JENNIFFER MELISSA",
+    "apellidos" : "GALARZA TITUANA",
+    "matricula" : "201450020",
+    "correo" : "jmgalarz@espol.edu.ec"
+  }
+]

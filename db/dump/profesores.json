@@ -1,0 +1,38 @@
+[
+  {
+    "_id" : "BJ8Ak1G9yW",
+    "nombres" : "TAMARA",
+    "apellidos" : "HEREDIA",
+    "tipo" : "titular",
+    "correo" : "mheredia@espol.edu.ec",
+    "preguntasCreadas" : [],
+    "nivelPeer" : [ 
+        {
+            "paralelo" : "Hyc_dwehW",
+            "nivel" : 1
+        }, 
+        {
+            "paralelo" : "S1WcduDlnW",
+            "nivel" : 1
+        }
+    ]
+  },
+  {
+    "_id" : "BJS01JfqJZ",
+    "nombres" : "JOSE GERARDO",
+    "apellidos" : "SACARELO MELENDEZ",
+    "tipo" : "titular",
+    "correo" : "jsacarel@espol.edu.ec",
+    "preguntasCreadas" : [],
+    "nivelPeer" : [ 
+        {
+            "paralelo" : "HJlquODlh-",
+            "nivel" : 1
+        }, 
+        {
+            "paralelo" : "HJEc_ODx2Z",
+            "nivel" : 1
+        }
+    ]
+  }
+]

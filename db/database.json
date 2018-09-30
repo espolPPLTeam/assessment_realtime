@@ -1,0 +1,132 @@
+{
+        codigo: '1234567',
+        paralelo: {
+          _id: 1,
+          nombre: '1',
+          nombreMateria: 'Fisica 1'
+        },
+        grupos: [
+          {
+            _id: 'Hkcoa5w3-',
+            nombre: 'Grupo 1',
+            estudiantes: [
+              {
+                _id: 'BJxgRuOvenZ',
+                nombres: 'JOHARA ELVIRA',
+                apellidos: 'SARMIENTO TAPIA',
+                matricula: '201501116',
+                correo: 'johelsar@espol.edu.ec'
+              },
+              {
+                _id: 'SJmeCudPl3W',
+                nombres: 'ANTHONY DARIO',
+                apellidos: 'HERNANDEZ TAMAYO',
+                matricula: '201504309',
+                correo: 'antdhern@espol.edu.ec'
+              }
+            ]
+          },
+          {
+            _id: 'ryfyAcw2b',
+            nombre: 'Grupo 2',
+            estudiantes: [
+              {
+                _id: 'BJDeAd_vln-',
+                nombres: 'BREW JONATHAN',
+                apellidos: 'COBOS GRANDA',
+                matricula: '201505975',
+                correo: 'bjcobos@espol.edu.ec'
+              }
+            ]
+          }
+        ],
+        leccion: {
+          _id: 1,
+          creador: {
+            _id: 'abc',
+            nombres: 'Joel Eduardo',
+            apellidos: 'Rodriguez Llamuca',
+            correo: 'joelerll@gmail.com'
+          },
+          nombre: 'Leccion 1',
+          tiempoEstimado: 50, // tiempo en minutos
+          tipo: 'taller'
+        },
+        moderadoresConectados: [],
+        preguntas: [{
+            _id: 'a',
+            nombre: 'Pregunta 1',
+            tiempoEstimado: 5,
+            puntaje: 20,
+            descripcion: 'Mi pregunta 1',
+            subpreguntas: [
+              {
+                orden : 1,
+                puntaje : "4",
+                contenido: 'Mi subpregunta 1-1'
+              },
+              {
+                orden : 2,
+                puntaje : "5",
+                contenido: 'Mi subpregunta 1-2'
+              },
+              {
+                orden : 3,
+                puntaje : "2",
+                contenido: 'Mi subpregunta 1-3'
+              }
+            ],
+            tipoPregunta: 'justificacion'
+          },
+          {
+            _id: 'aa',
+            nombre: 'Pregunta 2',
+            tiempoEstimado: 1,
+            puntaje: 10,
+            descripcion: 'Mi pregunta 2',
+            subpreguntas: [
+              {
+                orden : 1,
+                puntaje : "3",
+                contenido: 'Mi subpregunta 2-1'
+              },
+              {
+                orden : 2,
+                puntaje : "1",
+                contenido: 'Mi subpregunta 2-2'
+              }
+            ],
+            tipoPregunta: 'justificacion'
+          }
+        ],
+        estudiantes: [
+          {
+            _id: 'BJxgRuOvenZ',
+            nombres: 'JOHARA ELVIRA',
+            apellidos: 'SARMIENTO TAPIA',
+            matricula: '201501116',
+            correo: 'johelsar@espol.edu.ec'
+          },
+          {
+            _id: 'SJmeCudPl3W',
+            nombres: 'ANTHONY DARIO',
+            apellidos: 'HERNANDEZ TAMAYO',
+            matricula: '201504309',
+            correo: 'antdhern@espol.edu.ec'
+          },
+          {
+            _id: 'BJDeAd_vln-',
+            nombres: 'BREW JONATHAN',
+            apellidos: 'COBOS GRANDA',
+            matricula: '201505975',
+            correo: 'bjcobos@espol.edu.ec'
+          }
+        ],
+        estudiantesDandoLeccion: [],
+        respuestas: [],
+        fechaInicio: moment().toISOString(),
+        aumentados: [],
+        pausas: [],
+        continuadas: [],
+        estado: 'pendiente'
+      }
