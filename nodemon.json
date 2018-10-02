@@ -1,0 +1,19 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+   "node_modules/**/node_modules"
+ ],
+ "events": {
+    "restart": ""
+  },
+  "watch": [
+    "src/app.js",
+    "src/**",
+    "src/server.js"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json"
+}
