@@ -9,14 +9,14 @@ const LeccionesDatosSchema = mongoose.Schema({
     'default': require('shortid').generate
   },
   id: { type: String },
-  codigo: { type: String }, // generado en preSave
+  codigo: { type: String, unique: true }, // generado en preSave
   estado: {
     type: String,
     enum: ['esperando', 'tomando', 'pausado', 'terminado'],
     'default': 'esperando'
   },
   paralelo: {
-    _id: { type: String },
+    id: { type: String },
     nombre: { type: String }
   },
   fechaEmpezada: { type: String, 'default':  moment().toISOString() },
@@ -32,10 +32,22 @@ LeccionesDatosSchema.methods.Crear = function () {
 }
 
 LeccionesDatosSchema.statics = {
-  ObtenerPorParaleloId ({ paraleloId }) {
+  ObtenerPorParaleloId ({ id }) {
     const self = this
     return new Promise(function(resolve) {
-      resolve(self.findOne({ 'paralelo._id': paraleloId }))
+      resolve(self.findOne({ 'paralelo.id': id }))
+    })
+  },
+  ObtenerPorParaleloIdYEstado ({ id }) {
+    const self = this
+    return new Promise(function(resolve) {
+      resolve(self.findOne({ $and: [{ 'paralelo.id': id }, { 'estado': { $ne: 'terminado' } }] }))
+    })
+  },
+  ObtenerPorCodigo ({ codigo }) {
+    const self = this
+    return new Promise(function(resolve) {
+      resolve(self.findOne({ 'codigo': codigo }))
     })
   },
   Obtener ({ id }) {

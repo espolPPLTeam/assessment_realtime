@@ -56,11 +56,10 @@ module.exports = (app, db) => {
     y cuando el estudiante ingrese codigo
   */
   app
-    .route('/estudiante/verificarCodigo/:paraleloId/:estudianteId/:codigo')
+    .route('/estudiante/verificarCodigo/:paraleloId/:correo/:codigo')
     .get(async (req, res) => {
-      res.send('verificarCodigo')
-      let { paraleloId, estudianteId, codigo } = req.params
-      let resp = await Controller.VerificarCodigoEstudiante({ paraleloId, estudianteId, codigo })
+      let { paraleloId, correo, codigo } = req.params
+      let resp = await Controller.VerificarCodigoEstudiante({ paraleloId, correo, codigo })
       return res.status(resp.codigoEstado).send(resp)
     })
 

@@ -82,40 +82,50 @@ module.exports = ({ db }) => {
     async AumentarTiempo () {
 
     },
-    async VerificarCodigoEstudiante({ paraleloId, estudianteId, codigo }) {
-      // ingresoCodigo
-      // ingresoALeccion
+    // estudianteId es para ingresar que ya entro a la leccion
+    async VerificarCodigoEstudiante ({ paraleloId, correo, codigo }) {
+      // TODO: verificar si tiene grupo el estudiante y paralelo asignado
+      // hacerlo en el front posiblemente
 
-      // yaIngresoCodigo  paraleloDandoLeccion leccionYaEmpezo
-      // 0 0 0 = el paralelo no esta dando leccion
-      // 0 1 0 = tiene que ingresar el codigo
-      // 1 1 0 = tiene que esperar a que empiece la leccion
-      // 0 1 1 = al ingresar el codigo redirigirlo directamente
-      // 1 1 1 = redirigirlo directamente
-      // let { paraleloDandoLeccion, yaIngresoCodigo, leccionYaComenzo } = state.leccionRealtime
-      // if (!paraleloDandoLeccion) {
-      //   state.leccionRealtime.estado = 'paralelo-no-esta-dando-leccion'
-      // } else if (paraleloDandoLeccion && leccionYaComenzo && yaIngresoCodigo) {
-      //   state.leccionRealtime.estado = 'redirigirlo-directamente'
-      // } else if (yaIngresoCodigo && paraleloDandoLeccion) {
-      //   state.leccionRealtime.estado = 'tiene-que-esperar-a-que-empiece-la-leccion'
-      // } else if (paraleloDandoLeccion && leccionYaComenzo) {
-      //   state.leccionRealtime.estado = 'al-ingresar-el-codigo-redirigirlo-directamente'
-      // } else if (paraleloDandoLeccion) {
-      //   state.leccionRealtime.estado = 'tiene-que-ingresar-el-codigo'
-      // }
+      // es imposible que si paraleloEstaDandoLeccion = false y yaIngresoCodigo = true
+      let [ elCodigoEsValido, yaComenzoLeccion, paraleloEstaDandoLeccion ]= [ false, false, false ]
+      let leccion = null
+      // verificar si el paralelo esta dando leccion
+      // es necesario que todas la lecciones del paralelo se terminen
+      let paraleloExiste = await db.Lecciones.ObtenerPorParaleloIdYEstado({ id: paraleloId })
 
-      // leccion-estado, ingreso-codigo
+      if (paraleloExiste) {
+        paraleloEstaDandoLeccion = paraleloExiste['estado'] !== 'terminado'
+        leccion = JSON.parse(paraleloExiste['leccion'])
+        yaComenzoLeccion = (paraleloExiste['estado'] !== 'terminado' && paraleloExiste['estado'] !== 'esperando')
+        elCodigoEsValido = (paraleloExiste['codigo'] === codigo)
+        let leccionId = paraleloExiste['id']
+        let estudianteGuardado = await db.Estudiantes.ObtenerPorLeccionYParalelo({ leccionId, paraleloId })
+        if (!estudianteGuardado) {
+          let leccionId = paraleloExiste['id']
+          let estudiante = new db.Estudiantes({ correo, paraleloId, leccionId, yaIngresoCodigoCorrecto: elCodigoEsValido })
+          let estudianteCreado = await estudiante.Crear()
+          
+        } else if (elCodigoEsValido) {
+          await db.Estudiantes.CodigoCorrecto({ leccionId, paraleloId })
+        }
+      }
+      let mensaje = 'paralelo-no-esta-dando-leccion'
+      if (!paraleloEstaDandoLeccion) {
+        mensaje = 'paralelo-no-esta-dando-leccion'
+      } else if (paraleloEstaDandoLeccion && yaComenzoLeccion && elCodigoEsValido) {
+        mensaje = 'redirigirlo-directamente'
+      } else if (elCodigoEsValido && paraleloEstaDandoLeccion) {
+        mensaje = 'tiene-que-esperar-a-que-empiece-la-leccion'
+      } else if (paraleloEstaDandoLeccion && yaComenzoLeccion) {
+        mensaje = 'al-ingresar-el-codigo-redirigirlo-directamente'
+      } else if (!elCodigoEsValido && paraleloExiste) {
+        mensaje = 'tiene-que-ingresar-el-codigo'
+      } else if (paraleloEstaDandoLeccion) {
+        mensaje = 'tiene-que-ingresar-el-codigo'
+      }
 
-      // paralelo no esta dando leccion (leccion no existe)
-      // paralelo esta dando leccion (leccion estado: !esperando)
-      // ya ingreso codigo, tiene que redirigirlo (leccion estado: !esperando)
-      // tiene que esperar a que empiece la leccion (leccion estado: esperando)
-      // al ingresar redirigirlo directamente (leccion estado: !esperando)
-
-
-      // let estado = await db.VerificarCodigoEstudiante({ codigo, paraleloId })
-      // return responses.OK({ datos: estado })
+      return responses.OK({ mensaje, leccion })
     }
   }
   return Object.assign(Object.create(proto), {})

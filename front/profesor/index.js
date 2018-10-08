@@ -3,7 +3,7 @@ var socket = io('http://localhost:8011/leccion', {
 })
 
 socket.on('connect', function() {
-  socket.emit('USUARIO', { leccionId: 'abdccss', paraleloId: 'aaaa', usuarioId: 5, tipoUsuario: 'moderador', estado: 'tomando', dispositivo: '', usuarioDatos: 'joell' })
+  socket.emit('USUARIO', { leccionId: 'abdccss', paraleloId: 'x4B3Nh4rU', usuarioId: 5, tipoUsuario: 'moderador', estado: 'tomando', dispositivo: '', usuarioDatos: 'joell' })
 })
 
 
@@ -25,7 +25,7 @@ function comenzar () {
   })
   .then(function(data){
     if (data.estado) {
-      socket.emit('COMENZAR_LECCION', { leccionId: 'abdccss', paraleloId: 'aaaa', fechaInicioTomada: fecha.toISOString(), tiempoEstimado: 150, usuarioId: 5 })
+      socket.emit('COMENZAR_LECCION', { leccionId: 'abdccss', paraleloId: 'x4B3Nh4rU', fechaInicioTomada: fecha.toISOString(), tiempoEstimado: 150, usuarioId: 5 })
       let area = document.getElementById('leccion')
       area.value = JSON.stringify( data )
     } else {
@@ -49,7 +49,7 @@ function terminar () {
   })
   .then(function(data){
     if (data.estado) {
-      socket.emit('TERMINAR_LECCION', { leccionId: 'abdccss', paraleloId: 'aaaa', usuarioId: 5 })
+      socket.emit('TERMINAR_LECCION', { leccionId: 'abdccss', paraleloId: 'x4B3Nh4rU', usuarioId: 5 })
       let area = document.getElementById('leccion')
       area.value = JSON.stringify( data )
     } else {
@@ -60,7 +60,7 @@ function terminar () {
 
 function tomar () {
   let paralelo = {
-    _id: 'abcdff',
+    id: 'x4B3Nh4rU',
     nombre: '1',
     anio: '2018',
     termino: '1',

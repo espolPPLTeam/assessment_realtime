@@ -25,6 +25,7 @@ let Conectar = function (url) {
 }
 
 const Lecciones = require('../../api/lecciones/lecciones.model.js')
+const Estudiantes = require('../../api/estudiantes/estudiantes.model.js')
 // const Capitulos = require('../../modulos/capitulos/capitulos.model.js')
 // const Estudiantes = require('../../modulos/estudiantes/estudiantes.model.js')
 // const Grupos = require('../../modulos/grupos/grupos.model.js')
@@ -39,7 +40,8 @@ const Lecciones = require('../../api/lecciones/lecciones.model.js')
 
 let modelos = function () {
   return {
-    Lecciones
+    Lecciones,
+    Estudiantes
   }
 }
 
